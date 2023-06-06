@@ -1,0 +1,11 @@
+.contactItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+.bthListItem {
+    margin-left: 20px;
+    height: 20px;
+    border-radius: 5px;
+  }
