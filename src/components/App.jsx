@@ -9,7 +9,7 @@ import { Filter } from './Filter/Filter';
 export function App() {
   const [contacts, setContacts] = useState(() => {
     return (
-      JSON.parse(window.localStorage.getItem('contacts')) ?? [
+      JSON.parse(localStorage.getItem('contacts')) ?? [
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
         { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
@@ -21,7 +21,7 @@ export function App() {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = ({ name, number }) => {
@@ -39,9 +39,7 @@ export function App() {
       return alert(`${name} is already in contacts!`);
     }
 
-    return {
-      contacts: [contact, ...contacts],
-    };
+    return setContacts([contact, ...contacts]);
   };
 
   const deleteContact = contactId => {
